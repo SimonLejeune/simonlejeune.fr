@@ -5,31 +5,39 @@
       <h2 class="section-title">Qui suis-je ?</h2>
 
       <div class="about-layout">
-
         <!-- Texte de présentation -->
         <div class="about-intro fade-up">
           <p>
-            Mon parcours dev a démarré sur <strong>mobile</strong> — d'abord avec <strong>Swift</strong>
-            sur iOS, puis <strong>Flutter</strong> pour le cross-platform. Avec le temps j'ai voulu
-            élargir mon terrain de jeu et je me suis orienté vers le <strong>frontend web avec Vue.js</strong>,
-            qui est aujourd'hui ma stack principale.
+            Mon parcours dev a démarré sur <strong>mobile</strong> — d'abord
+            avec <strong>Swift</strong> sur iOS, puis
+            <strong>Flutter</strong> pour le cross-platform. Avec le temps j'ai
+            voulu élargir mon terrain de jeu et je me suis orienté vers le
+            <strong>frontend web avec Vue.js</strong>, qui est aujourd'hui ma
+            stack principale.
           </p>
           <p>
-            En parallèle je m'intéresse de plus en plus au <strong>backend</strong> (Kotlin, Java, Spring Boot)
-            et au <strong>DevOps</strong> — parce que comprendre ce qu'il y a derrière l'interface,
-            ça change vraiment la façon de coder.
+            En parallèle je m'intéresse de plus en plus au
+            <strong>backend</strong> (Kotlin, Java, Spring Boot) et au
+            <strong>DevOps</strong> — parce que comprendre ce qu'il y a derrière
+            l'interface, ça change vraiment la façon de coder.
           </p>
           <p>
-            En dehors du travail, j'aime bidouiller. Dernièrement je me suis lancé dans le
-            <strong>self-hosting</strong> et franchement j'adore ça — héberger ses propres services,
-            comprendre l'infra, garder le contrôle. Quand quelque chose m'accroche, je suis dedans
-            à fond jusqu'à en maîtriser les rouages.
+            En dehors du travail, j'aime bidouiller. Dernièrement je me suis
+            lancé dans le
+            <strong>self-hosting</strong> et franchement j'adore ça — héberger
+            ses propres services, comprendre l'infra, garder le contrôle. Quand
+            quelque chose m'accroche, je suis dedans à fond jusqu'à en maîtriser
+            les rouages.
           </p>
         </div>
 
         <!-- Skills par catégorie -->
         <div class="skills-grid fade-up">
-          <div v-for="category in skillCategories" :key="category.label" class="skill-category">
+          <div
+            v-for="category in skillCategories"
+            :key="category.label"
+            class="skill-category"
+          >
             <div class="skill-cat-header">
               <div class="skill-cat-icon">
                 <i :class="category.icon" />
@@ -48,12 +56,15 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <!-- Centres d'intérêt -->
       <div class="interests fade-up">
-        <div v-for="interest in interests" :key="interest.label" class="interest-item">
+        <div
+          v-for="interest in interests"
+          :key="interest.label"
+          class="interest-item"
+        >
           <div class="interest-icon">
             <i :class="interest.icon" />
           </div>
@@ -63,91 +74,92 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
 
 const skillCategories = [
   {
-    label: 'Mobile',
-    icon: 'pi pi-mobile',
+    label: "Mobile",
+    icon: "pi pi-mobile",
     skills: [
-      { name: 'Flutter', level: 'strong' },
-      { name: 'Dart', level: 'strong' },
-      { name: 'Swift', level: 'medium' },
-      { name: 'iOS', level: 'medium' },
+      { name: "Flutter", level: "strong" },
+      { name: "Dart", level: "strong" },
+      { name: "Swift", level: "medium" },
+      { name: "iOS", level: "medium" },
     ],
   },
   {
-    label: 'Frontend',
-    icon: 'pi pi-desktop',
+    label: "Frontend",
+    icon: "pi pi-desktop",
     skills: [
-      { name: 'Vue.js', level: 'strong' },
-      { name: 'TypeScript', level: 'strong' },
-      { name: 'HTML / CSS', level: 'strong' },
-      { name: 'Vite', level: 'medium' },
+      { name: "Vue.js", level: "strong" },
+      { name: "TypeScript", level: "strong" },
+      { name: "HTML / CSS", level: "strong" },
+      { name: "Vite", level: "medium" },
     ],
   },
   {
-    label: 'Backend & Intérêts',
-    icon: 'pi pi-server',
+    label: "Backend & Intérêts",
+    icon: "pi pi-server",
     skills: [
-      { name: 'Kotlin', level: 'learning' },
-      { name: 'Java', level: 'learning' },
-      { name: 'Spring Boot', level: 'learning' },
-      { name: 'Node.js', level: 'medium' },
+      { name: "Kotlin", level: "learning" },
+      { name: "Java", level: "learning" },
+      { name: "Spring Boot", level: "learning" },
+      { name: "Node.js", level: "medium" },
     ],
   },
   {
-    label: 'Outils & DevOps',
-    icon: 'pi pi-wrench',
+    label: "Outils & DevOps",
+    icon: "pi pi-wrench",
     skills: [
-      { name: 'Git / GitHub', level: 'strong' },
-      { name: 'Docker', level: 'medium' },
-      { name: 'Self-hosting', level: 'medium' },
-      { name: 'CI/CD', level: 'learning' },
+      { name: "Git / GitHub", level: "strong" },
+      { name: "Docker", level: "medium" },
+      { name: "Self-hosting", level: "medium" },
+      { name: "CI/CD", level: "learning" },
     ],
   },
-]
+];
 
 const interests = [
   {
-    icon: 'pi pi-home',
-    label: 'Self-hosting',
-    desc: 'Héberger ses propres services, bidouiller son infra, garder le contrôle.',
+    icon: "pi pi-home",
+    label: "Self-hosting",
+    desc: "Héberger ses propres services, bidouiller son infra, garder le contrôle.",
   },
   {
-    icon: 'pi pi-star',
-    label: 'Projets perso',
-    desc: 'Des side projects pour explorer de nouvelles technos, souvent à fond.',
+    icon: "pi pi-star",
+    label: "Projets perso",
+    desc: "Des side projects pour explorer de nouvelles technos, souvent à fond.",
   },
   {
-    icon: 'pi pi-wrench',
-    label: 'Bricolage tech',
-    desc: 'Raspberry Pi, home lab, automatisation — si c\'est bidouillable, je teste.',
+    icon: "pi pi-wrench",
+    label: "Bricolage tech",
+    desc: "Raspberry Pi, home lab, automatisation — si c'est bidouillable, je teste.",
   },
   {
-    icon: 'pi pi-search',
-    label: 'Veille techno',
-    desc: 'Toujours à l\'affût de nouvelles stacks, frameworks ou patterns.',
+    icon: "pi pi-search",
+    label: "Veille techno",
+    desc: "Toujours à l'affût de nouvelles stacks, frameworks ou patterns.",
   },
-]
+];
 
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('visible')
-      })
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
     },
     { threshold: 0.1 },
-  )
-  document.querySelectorAll('#about .fade-up').forEach((el) => observer.observe(el))
-})
+  );
+  document
+    .querySelectorAll("#about .fade-up")
+    .forEach((el) => observer.observe(el));
+});
 </script>
 
 <style scoped>
@@ -276,7 +288,9 @@ onMounted(() => {
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 1.1rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .interest-item:hover {
@@ -337,9 +351,15 @@ onMounted(() => {
   border-radius: 50%;
 }
 
-.legend-dot.strong { background: var(--accent-light); }
-.legend-dot.medium { background: #90cdf4; }
-.legend-dot.learning { background: #f6ad55; }
+.legend-dot.strong {
+  background: var(--accent-light);
+}
+.legend-dot.medium {
+  background: #90cdf4;
+}
+.legend-dot.learning {
+  background: #f6ad55;
+}
 
 /* ── Responsive ── */
 @media (max-width: 900px) {

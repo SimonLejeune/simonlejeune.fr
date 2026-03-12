@@ -208,19 +208,20 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 .nav-mobile {
   display: none;
   flex-direction: column;
-  padding: 0 2rem 1.25rem;
+  padding: 0;
   gap: 0.25rem;
   background: rgba(10, 10, 15, 0.95);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid transparent;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  transition: max-height 0.3s ease, padding 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-mobile.open {
-  max-height: 300px;
-  padding: 0.75rem 2rem 1.25rem;
+  max-height: 400px;
+  padding: 0.75rem 1.25rem 1.25rem;
+  border-bottom-color: var(--border-subtle);
 }
 
 .nav-mobile-link {
@@ -248,14 +249,6 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
   .nav-mobile {
     display: flex;
-  }
-
-  .nav-mobile {
-    padding: 0 1.25rem 1.25rem;
-  }
-
-  .nav-mobile.open {
-    padding: 0.75rem 1.25rem 1.25rem;
   }
 }
 

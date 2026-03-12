@@ -31,7 +31,9 @@
                   <i class="pi pi-calendar" />
                   {{ exp.period }}
                 </div>
-                <span v-if="exp.current" class="exp-current-badge">En poste</span>
+                <span v-if="exp.current" class="exp-current-badge"
+                  >En poste</span
+                >
               </div>
             </div>
 
@@ -39,7 +41,11 @@
 
             <!-- Missions -->
             <div v-if="exp.missions?.length" class="exp-missions">
-              <div v-for="mission in exp.missions" :key="mission.client" class="mission-item">
+              <div
+                v-for="mission in exp.missions"
+                :key="mission.client"
+                class="mission-item"
+              >
                 <div class="mission-dot" />
                 <div class="mission-body">
                   <span class="mission-client">{{ mission.client }}</span>
@@ -56,7 +62,9 @@
             </ul>
 
             <div class="exp-tags">
-              <span v-for="tag in exp.tags" :key="tag" class="tag">{{ tag }}</span>
+              <span v-for="tag in exp.tags" :key="tag" class="tag">{{
+                tag
+              }}</span>
             </div>
           </div>
         </div>
@@ -85,83 +93,97 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
 
 const experiences = [
   {
-    role: 'Développeur d\'applications mobiles',
-    company: 'Niji',
-    type: 'CDI',
-    period: 'Sept. 2021 – aujourd\'hui',
+    role: "Développeur d'applications mobiles",
+    company: "Niji",
+    type: "CDI",
+    period: "Sept. 2021 – aujourd'hui",
     current: true,
-    description: 'ESN spécialisée en transformation digitale. Intervenant sur des missions clients variées en développement mobile (Flutter, Swift) et web.',
+    description:
+      "ESN spécialisée en transformation digitale. Intervenant sur des missions clients variées en développement mobile (Flutter, Swift) et web.",
     missions: [
       {
-        client: 'ADEO (Leroy Merlin, Bricoman…) — depuis févr. 2022',
-        desc: 'Refonte complète de deux apps Flutter (demandes de stock et traitement), migration React → Vue.js pour la topologie des magasins, développement de routes BFF, participation au backend, contribution au Design System Flutter.',
+        client: "ADEO (Leroy Merlin, Bricoman…) — depuis févr. 2022",
+        desc: "Refonte complète de deux apps Flutter (demandes de stock et traitement), migration React → Vue.js pour la topologie des magasins, développement de routes BFF, participation au backend, contribution au Design System Flutter.",
       },
       {
-        client: 'Coopérative U — application Courses U',
-        desc: 'Maintenance et correction de bugs sur l\'application iOS Swift, refonte complète du parcours de paiement.',
+        client: "Coopérative U — application Courses U",
+        desc: "Maintenance et correction de bugs sur l'application iOS Swift, refonte complète du parcours de paiement.",
       },
     ],
     highlights: [],
-    tags: ['Flutter', 'Vue.js', 'Swift', 'iOS', 'BFF', 'Design System', 'Git', 'GitHub', 'JIRA', 'GitFlow'],
+    tags: [
+      "Flutter",
+      "Vue.js",
+      "Swift",
+      "iOS",
+      "BFF",
+      "Design System",
+      "Git",
+      "GitHub",
+      "JIRA",
+      "GitFlow",
+    ],
   },
   {
-    role: 'Développeur d\'applications mobiles',
-    company: 'Niji',
-    type: 'Stage → CDI',
-    period: 'Mars 2021 – aujourd\'hui',
+    role: "Développeur d'applications mobiles",
+    company: "Niji",
+    type: "Stage → CDI",
+    period: "Mars 2021 – aujourd'hui",
     current: false,
-    description: 'Stage de fin d\'études chez Niji, converti en CDI à l\'issue. Mission sur l\'application Courses U de la Coopérative U en Swift iOS.',
+    description:
+      "Stage de fin d'études chez Niji, converti en CDI à l'issue. Mission sur l'application Courses U de la Coopérative U en Swift iOS.",
     missions: [],
     highlights: [],
-    tags: ['Swift', 'iOS', 'Git', 'GitLab', 'JIRA'],
+    tags: ["Swift", "iOS", "Git", "GitLab", "JIRA"],
   },
-]
+];
 
 const associatif = [
   {
-    icon: 'pi pi-users',
-    role: 'Vice-président',
-    org: 'Association E-mma · Epitech Lille',
-    period: 'Avr. 2018 – Avr. 2019',
-    desc: 'Association promouvant la mixité dans le numérique sur le campus Epitech Lille.',
+    icon: "pi pi-users",
+    role: "Vice-président",
+    org: "Association E-mma · Epitech Lille",
+    period: "Avr. 2018 – Avr. 2019",
+    desc: "Association promouvant la mixité dans le numérique sur le campus Epitech Lille.",
   },
   {
-    icon: 'pi pi-graduation-cap',
-    role: 'Accompagnateur Développement',
-    org: 'EPITECH Lille',
-    period: 'Nov. 2018 – Mars 2019',
-    desc: 'Animation d\'ateliers de code, développement d\'une plateforme e-learning, contact avec des lycées.',
+    icon: "pi pi-graduation-cap",
+    role: "Accompagnateur Développement",
+    org: "EPITECH Lille",
+    period: "Nov. 2018 – Mars 2019",
+    desc: "Animation d'ateliers de code, développement d'une plateforme e-learning, contact avec des lycées.",
   },
   {
-    icon: 'pi pi-map',
-    role: 'Participant',
-    org: '4L Trophy',
-    period: 'Févr. 2019',
-    desc: 'Raid humanitaire étudiant à travers le Maroc au profit d\'enfants défavorisés.',
+    icon: "pi pi-map",
+    role: "Participant",
+    org: "4L Trophy",
+    period: "Févr. 2019",
+    desc: "Raid humanitaire étudiant à travers le Maroc au profit d'enfants défavorisés.",
   },
-]
+];
 
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('visible')
-      })
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
     },
     { threshold: 0.1 },
-  )
-  document.querySelectorAll('#experience .fade-up').forEach((el) => observer.observe(el))
-})
+  );
+  document
+    .querySelectorAll("#experience .fade-up")
+    .forEach((el) => observer.observe(el));
+});
 </script>
 
 <style scoped>
@@ -205,11 +227,13 @@ onMounted(() => {
 
 .timeline-dot.current {
   background: #4ade80;
-  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2), 0 0 10px rgba(74, 222, 128, 0.4);
+  box-shadow:
+    0 0 0 3px rgba(74, 222, 128, 0.2),
+    0 0 10px rgba(74, 222, 128, 0.4);
 }
 
 .timeline-line::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 18px;
   bottom: -3rem;
@@ -415,7 +439,9 @@ onMounted(() => {
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 1.1rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .assoc-card:hover {

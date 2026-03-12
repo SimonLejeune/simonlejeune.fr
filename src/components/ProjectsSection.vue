@@ -16,10 +16,24 @@
               <i :class="project.icon" />
             </div>
             <div class="card-links">
-              <a v-if="project.github" :href="project.github" target="_blank" rel="noopener" class="card-link" title="Code source">
+              <a
+                v-if="project.github"
+                :href="project.github"
+                target="_blank"
+                rel="noopener"
+                class="card-link"
+                title="Code source"
+              >
                 <i class="pi pi-github" />
               </a>
-              <a v-if="project.url" :href="project.url" target="_blank" rel="noopener" class="card-link" title="Voir le site">
+              <a
+                v-if="project.url"
+                :href="project.url"
+                target="_blank"
+                rel="noopener"
+                class="card-link"
+                title="Voir le site"
+              >
                 <i class="pi pi-external-link" />
               </a>
             </div>
@@ -31,13 +45,20 @@
           <p class="card-desc">{{ project.description }}</p>
 
           <div class="card-tags">
-            <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
+            <span v-for="tag in project.tags" :key="tag" class="tag">{{
+              tag
+            }}</span>
           </div>
         </article>
       </div>
 
       <div class="projects-footer fade-up">
-        <a href="https://github.com/simonlejeune" target="_blank" rel="noopener" class="cta-secondary">
+        <a
+          href="https://github.com/simonlejeune"
+          target="_blank"
+          rel="noopener"
+          class="cta-secondary"
+        >
           <i class="pi pi-github" />
           Voir plus sur GitHub
         </a>
@@ -47,42 +68,46 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
 
 const projects = [
   {
-    title: 'Pokédex',
-    description: 'Application web de Pokédex permettant de consulter tous les Pokémon, leurs stats, types et évolutions. Données récupérées depuis la PokéAPI, interface fluide et réactive construite avec Vue.js.',
-    icon: 'pi pi-star',
-    type: 'Projet perso',
-    tags: ['Vue.js', 'PokéAPI', 'TypeScript', 'Vite'],
-    github: 'https://github.com/SimonLejeune',
+    title: "Pokédex",
+    description:
+      "Application web de Pokédex permettant de consulter tous les Pokémon, leurs stats, types et évolutions. Données récupérées depuis la PokéAPI, interface fluide et réactive construite avec Vue.js.",
+    icon: "pi pi-star",
+    type: "Projet perso",
+    tags: ["Vue.js", "PokéAPI", "TypeScript", "Vite"],
+    github: "https://github.com/SimonLejeune",
     url: null,
   },
   {
-    title: 'simonlejeune.fr',
-    description: 'Mon portfolio personnel — le site que vous consultez en ce moment. Single page app construite avec Vue 3, TypeScript et PrimeVue (thème Aura), déployée sur simonlejeune.fr.',
-    icon: 'pi pi-user',
-    type: 'Portfolio',
-    tags: ['Vue.js', 'TypeScript', 'PrimeVue', 'Vite'],
-    github: 'https://github.com/SimonLejeune',
-    url: 'https://simonlejeune.fr',
+    title: "simonlejeune.fr",
+    description:
+      "Mon portfolio personnel — le site que vous consultez en ce moment. Single page app construite avec Vue 3, TypeScript et PrimeVue (thème Aura), déployée sur simonlejeune.fr.",
+    icon: "pi pi-user",
+    type: "Portfolio",
+    tags: ["Vue.js", "TypeScript", "PrimeVue", "Vite"],
+    github: "https://github.com/SimonLejeune",
+    url: "https://simonlejeune.fr",
   },
-]
+];
 
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible')
+          entry.target.classList.add("visible");
         }
-      })
+      });
     },
     { threshold: 0.1 },
-  )
-  document.querySelectorAll('#projects .fade-up').forEach((el) => observer.observe(el))
-})
+  );
+  document
+    .querySelectorAll("#projects .fade-up")
+    .forEach((el) => observer.observe(el));
+});
 </script>
 
 <style scoped>
@@ -101,7 +126,10 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
 .project-card:hover {
@@ -144,7 +172,10 @@ onMounted(() => {
   border: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 0.85rem;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .card-link:hover {
@@ -197,7 +228,10 @@ onMounted(() => {
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .cta-secondary:hover {

@@ -12,9 +12,9 @@
       </h1>
 
       <p class="hero-subtitle fade-up">
-        Parti du développement mobile — Swift, puis Flutter — je me suis tourné vers
-        le frontend web avec Vue.js. Curieux, bricoleur, toujours partant pour un nouveau
-        projet ou une techno à explorer.
+        Parti du développement mobile — Swift, puis Flutter — je me suis tourné
+        vers le frontend web avec Vue.js. Curieux, bricoleur, toujours partant
+        pour un nouveau projet ou une techno à explorer.
       </p>
 
       <div class="hero-stack fade-up">
@@ -22,17 +22,32 @@
       </div>
 
       <div class="hero-cta fade-up">
-        <a href="#projects" class="cta-primary" @click.prevent="scrollTo('projects')">
+        <a
+          href="#projects"
+          class="cta-primary"
+          @click.prevent="scrollTo('projects')"
+        >
           Voir mes projets
           <i class="pi pi-arrow-right" />
         </a>
-        <a href="#contact" class="cta-secondary" @click.prevent="scrollTo('contact')">
+        <a
+          href="#contact"
+          class="cta-secondary"
+          @click.prevent="scrollTo('contact')"
+        >
           Me contacter
         </a>
       </div>
 
       <div class="hero-links fade-up">
-        <a v-for="link in links" :key="link.label" :href="link.url" target="_blank" rel="noopener" class="hero-link">
+        <a
+          v-for="link in links"
+          :key="link.label"
+          :href="link.url"
+          target="_blank"
+          rel="noopener"
+          class="hero-link"
+        >
           <i :class="link.icon" />
           {{ link.label }}
         </a>
@@ -44,29 +59,37 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
 
-const stack = ['Vue.js', 'Flutter', 'TypeScript', 'Swift', 'Kotlin', 'Git']
+const stack = ["Vue.js", "Flutter", "TypeScript", "Swift", "Kotlin", "Git"];
 
 const links = [
-  { label: 'GitHub', icon: 'pi pi-github', url: 'https://github.com/simonlejeune' },
-  { label: 'LinkedIn', icon: 'pi pi-linkedin', url: 'https://www.linkedin.com/in/simon-lejeune/' },
-]
+  {
+    label: "GitHub",
+    icon: "pi pi-github",
+    url: "https://github.com/simonlejeune",
+  },
+  {
+    label: "LinkedIn",
+    icon: "pi pi-linkedin",
+    url: "https://www.linkedin.com/in/simon-lejeune/",
+  },
+];
 
 function scrollTo(id: string) {
-  const el = document.getElementById(id)
+  const el = document.getElementById(id);
   if (el) {
-    const top = el.getBoundingClientRect().top + window.scrollY - 80
-    window.scrollTo({ top, behavior: 'smooth' })
+    const top = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: "smooth" });
   }
 }
 
 onMounted(() => {
-  const els = document.querySelectorAll('#hero .fade-up')
+  const els = document.querySelectorAll("#hero .fade-up");
   els.forEach((el, i) => {
-    setTimeout(() => el.classList.add('visible'), 100 + i * 120)
-  })
-})
+    setTimeout(() => el.classList.add("visible"), 100 + i * 120);
+  });
+});
 </script>
 
 <style scoped>
@@ -91,7 +114,11 @@ onMounted(() => {
   transform: translateX(-50%);
   width: 800px;
   height: 600px;
-  background: radial-gradient(ellipse at center, rgba(124, 106, 247, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(124, 106, 247, 0.1) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -118,8 +145,13 @@ onMounted(() => {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .hero-title {
@@ -174,7 +206,9 @@ onMounted(() => {
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s ease, transform 0.15s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
 }
 
 .cta-primary:hover {
@@ -201,7 +235,10 @@ onMounted(() => {
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .cta-secondary:hover {

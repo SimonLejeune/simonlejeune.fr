@@ -7,13 +7,20 @@
       <div class="contact-layout">
         <div class="contact-intro fade-up">
           <p class="contact-text">
-            Vous cherchez un développeur pour un projet, une mission freelance ou
-            simplement échanger sur la tech ? N'hésitez pas à me contacter, je réponds
-            généralement sous 24–48h.
+            Vous cherchez un développeur pour un projet, une mission freelance
+            ou simplement échanger sur la tech ? N'hésitez pas à me contacter,
+            je réponds généralement sous 24–48h.
           </p>
 
           <div class="contact-links">
-            <a v-for="link in socialLinks" :key="link.label" :href="link.url" target="_blank" rel="noopener" class="social-link">
+            <a
+              v-for="link in socialLinks"
+              :key="link.label"
+              :href="link.url"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+            >
               <div class="social-icon">
                 <i :class="link.icon" />
               </div>
@@ -26,7 +33,11 @@
           </div>
         </div>
 
-        <form class="contact-form fade-up" @submit.prevent="handleSubmit" novalidate>
+        <form
+          class="contact-form fade-up"
+          @submit.prevent="handleSubmit"
+          novalidate
+        >
           <div class="form-group">
             <label for="name">Votre nom</label>
             <input
@@ -37,7 +48,9 @@
               :class="{ error: errors.name }"
               @blur="validate('name')"
             />
-            <span v-if="errors.name" class="field-error">{{ errors.name }}</span>
+            <span v-if="errors.name" class="field-error">{{
+              errors.name
+            }}</span>
           </div>
 
           <div class="form-group">
@@ -50,7 +63,9 @@
               :class="{ error: errors.email }"
               @blur="validate('email')"
             />
-            <span v-if="errors.email" class="field-error">{{ errors.email }}</span>
+            <span v-if="errors.email" class="field-error">{{
+              errors.email
+            }}</span>
           </div>
 
           <div class="form-group">
@@ -63,7 +78,9 @@
               :class="{ error: errors.message }"
               @blur="validate('message')"
             />
-            <span v-if="errors.message" class="field-error">{{ errors.message }}</span>
+            <span v-if="errors.message" class="field-error">{{
+              errors.message
+            }}</span>
           </div>
 
           <button type="submit" class="btn-submit" :disabled="loading">
@@ -87,73 +104,77 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted } from "vue";
 
 const socialLinks = [
   {
-    label: 'GitHub',
-    value: '@simonlejeune',
-    icon: 'pi pi-github',
-    url: 'https://github.com/simonlejeune',
+    label: "GitHub",
+    value: "@simonlejeune",
+    icon: "pi pi-github",
+    url: "https://github.com/simonlejeune",
   },
   {
-    label: 'LinkedIn',
-    value: 'Simon Lejeune',
-    icon: 'pi pi-linkedin',
-    url: 'https://www.linkedin.com/in/simon-lejeune/',
+    label: "LinkedIn",
+    value: "Simon Lejeune",
+    icon: "pi pi-linkedin",
+    url: "https://www.linkedin.com/in/simon-lejeune/",
   },
   {
-    label: 'Email',
-    value: 'hello@simonlejeune.fr',
-    icon: 'pi pi-envelope',
-    url: 'mailto:hello@simonlejeune.fr',
+    label: "Email",
+    value: "hello@simonlejeune.fr",
+    icon: "pi pi-envelope",
+    url: "mailto:hello@simonlejeune.fr",
   },
-]
+];
 
-const form = reactive({ name: '', email: '', message: '' })
-const errors = reactive({ name: '', email: '', message: '' })
-const loading = ref(false)
-const sent = ref(false)
+const form = reactive({ name: "", email: "", message: "" });
+const errors = reactive({ name: "", email: "", message: "" });
+const loading = ref(false);
+const sent = ref(false);
 
 function validate(field: keyof typeof form) {
-  if (field === 'name') {
-    errors.name = form.name.trim() ? '' : 'Le nom est requis.'
+  if (field === "name") {
+    errors.name = form.name.trim() ? "" : "Le nom est requis.";
   }
-  if (field === 'email') {
-    if (!form.email.trim()) errors.email = 'L\'email est requis.'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errors.email = 'Email invalide.'
-    else errors.email = ''
+  if (field === "email") {
+    if (!form.email.trim()) errors.email = "L'email est requis.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      errors.email = "Email invalide.";
+    else errors.email = "";
   }
-  if (field === 'message') {
-    errors.message = form.message.trim().length > 10 ? '' : 'Le message est trop court.'
+  if (field === "message") {
+    errors.message =
+      form.message.trim().length > 10 ? "" : "Le message est trop court.";
   }
 }
 
 function validateAll() {
-  (['name', 'email', 'message'] as const).forEach(validate)
-  return !errors.name && !errors.email && !errors.message
+  (["name", "email", "message"] as const).forEach(validate);
+  return !errors.name && !errors.email && !errors.message;
 }
 
 async function handleSubmit() {
-  if (!validateAll()) return
-  loading.value = true
-  await new Promise((r) => setTimeout(r, 1500))
-  loading.value = false
-  sent.value = true
-  Object.assign(form, { name: '', email: '', message: '' })
+  if (!validateAll()) return;
+  loading.value = true;
+  await new Promise((r) => setTimeout(r, 1500));
+  loading.value = false;
+  sent.value = true;
+  Object.assign(form, { name: "", email: "", message: "" });
 }
 
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('visible')
-      })
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
     },
     { threshold: 0.1 },
-  )
-  document.querySelectorAll('#contact .fade-up').forEach((el) => observer.observe(el))
-})
+  );
+  document
+    .querySelectorAll("#contact .fade-up")
+    .forEach((el) => observer.observe(el));
+});
 </script>
 
 <style scoped>
@@ -186,7 +207,10 @@ onMounted(() => {
   border: 1px solid var(--border-subtle);
   background: var(--bg-card);
   text-decoration: none;
-  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .social-link:hover {
@@ -262,7 +286,7 @@ textarea {
   border-radius: 10px;
   padding: 0.7rem 0.9rem;
   color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   outline: none;
   transition: border-color 0.2s ease;
@@ -303,8 +327,11 @@ textarea.error {
   font-weight: 600;
   border: none;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
-  transition: background 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
+  font-family: "Inter", sans-serif;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    opacity 0.2s ease;
 }
 
 .btn-submit:hover:not(:disabled) {

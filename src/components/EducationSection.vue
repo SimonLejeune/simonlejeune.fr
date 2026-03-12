@@ -12,8 +12,12 @@
           </div>
           <div class="epitech-info">
             <div class="epitech-badge">Bac+5</div>
-            <h3 class="epitech-title">Expert en Technologies de l'Information</h3>
-            <p class="epitech-school">Epitech — European Institute of Technology · Lille</p>
+            <h3 class="epitech-title">
+              Expert en Technologies de l'Information
+            </h3>
+            <p class="epitech-school">
+              Epitech — European Institute of Technology · Lille
+            </p>
           </div>
         </div>
         <div class="epitech-right">
@@ -21,9 +25,11 @@
           <span class="epitech-duration">5 ans</span>
         </div>
         <p class="epitech-desc">
-          À travers des projets concrets et une pédagogie par la pratique, Epitech m'a permis d'acquérir
-          une solide maîtrise du développement logiciel. Autonomie, résolution de problèmes complexes,
-          travail en équipe et innovation technique sont au cœur de cette formation d'excellence.
+          À travers des projets concrets et une pédagogie par la pratique,
+          Epitech m'a permis d'acquérir une solide maîtrise du développement
+          logiciel. Autonomie, résolution de problèmes complexes, travail en
+          équipe et innovation technique sont au cœur de cette formation
+          d'excellence.
         </p>
       </div>
 
@@ -37,7 +43,9 @@
             <div>
               <div class="exchange-badge">Échange universitaire</div>
               <h3 class="exchange-title">Année académique à l'étranger</h3>
-              <p class="exchange-school">UQAR — Université du Québec à Rimouski · Lévis, Québec, Canada</p>
+              <p class="exchange-school">
+                UQAR — Université du Québec à Rimouski · Lévis, Québec, Canada
+              </p>
             </div>
             <div class="exchange-period">
               <span class="exchange-years">2019</span>
@@ -45,9 +53,10 @@
             </div>
           </div>
           <p class="exchange-desc">
-            Année académique passée au Québec dans le cadre du programme d'échange Epitech.
-            Une expérience enrichissante sur le plan humain et technique, avec une immersion
-            complète dans la culture nord-américaine et un environnement académique anglophone.
+            Année académique passée au Québec dans le cadre du programme
+            d'échange Epitech. Une expérience enrichissante sur le plan humain
+            et technique, avec une immersion complète dans la culture
+            nord-américaine et un environnement académique anglophone.
           </p>
         </div>
       </div>
@@ -75,9 +84,13 @@
           </div>
           <h4 class="stage-role">{{ stage.role }}</h4>
           <p class="stage-company">{{ stage.company }} · {{ stage.city }}</p>
-          <p v-if="stage.description" class="stage-desc">{{ stage.description }}</p>
+          <p v-if="stage.description" class="stage-desc">
+            {{ stage.description }}
+          </p>
           <div class="stage-tags">
-            <span v-for="tag in stage.tags" :key="tag" class="tag">{{ tag }}</span>
+            <span v-for="tag in stage.tags" :key="tag" class="tag">{{
+              tag
+            }}</span>
           </div>
         </div>
       </div>
@@ -86,52 +99,57 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
 
 const stages = [
   {
-    role: 'Développeur d\'applications mobiles',
-    company: 'Niji',
-    city: 'Lille',
-    type: 'Stage',
-    years: 'Mars – Août 2021',
-    icon: 'pi pi-mobile',
-    description: 'Stage de fin d\'études. Mission sur l\'application Courses U de la Coopérative U, développée en Swift pour iOS.',
-    tags: ['Swift', 'iOS', 'Git', 'GitLab', 'JIRA'],
+    role: "Développeur d'applications mobiles",
+    company: "Niji",
+    city: "Lille",
+    type: "Stage",
+    years: "Mars – Août 2021",
+    icon: "pi pi-mobile",
+    description:
+      "Stage de fin d'études. Mission sur l'application Courses U de la Coopérative U, développée en Swift pour iOS.",
+    tags: ["Swift", "iOS", "Git", "GitLab", "JIRA"],
   },
   {
-    role: 'Développeur iOS',
-    company: 'Tymate',
-    city: 'Lille',
-    type: 'Stage',
-    years: 'Avr. – Août 2019',
-    icon: 'pi pi-server',
-    description: 'Développement d\'applications mobiles, dont une application de centralisation de blogs et des solutions digitales pour Sergic.',
-    tags: ['Swift', 'iOS', 'Mobile'],
+    role: "Développeur iOS",
+    company: "Tymate",
+    city: "Lille",
+    type: "Stage",
+    years: "Avr. – Août 2019",
+    icon: "pi pi-server",
+    description:
+      "Développement d'applications mobiles, dont une application de centralisation de blogs et des solutions digitales pour Sergic.",
+    tags: ["Swift", "iOS", "Mobile"],
   },
   {
-    role: 'Développeur iOS',
-    company: 'WAZAPP',
-    city: 'Lille',
-    type: 'Stage',
-    years: 'Juil. – Déc. 2017',
-    icon: 'pi pi-code',
-    description: 'Application de guidage à vélo pour la Métropole de Lille et plateforme de gestion de fichiers pour Naval Group.',
-    tags: ['Swift', 'iOS', 'Mobile'],
+    role: "Développeur iOS",
+    company: "WAZAPP",
+    city: "Lille",
+    type: "Stage",
+    years: "Juil. – Déc. 2017",
+    icon: "pi pi-code",
+    description:
+      "Application de guidage à vélo pour la Métropole de Lille et plateforme de gestion de fichiers pour Naval Group.",
+    tags: ["Swift", "iOS", "Mobile"],
   },
-]
+];
 
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('visible')
-      })
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
     },
     { threshold: 0.1 },
-  )
-  document.querySelectorAll('#education .fade-up').forEach((el) => observer.observe(el))
-})
+  );
+  document
+    .querySelectorAll("#education .fade-up")
+    .forEach((el) => observer.observe(el));
+});
 </script>
 
 <style scoped>
@@ -152,13 +170,18 @@ onMounted(() => {
 }
 
 .epitech-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-light), transparent);
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent-light),
+    transparent
+  );
   border-radius: 16px 16px 0 0;
 }
 
@@ -261,7 +284,9 @@ onMounted(() => {
   border-radius: 14px;
   padding: 1.5rem;
   margin-bottom: 2.5rem;
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .exchange-card:hover {
@@ -380,7 +405,10 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
 .stage-card:hover {
