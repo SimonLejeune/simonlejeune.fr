@@ -121,9 +121,9 @@ const socialLinks = [
   },
   {
     label: "Email",
-    value: "hello@simonlejeune.fr",
+    value: 'simon.lejeune@epitech.eu',
     icon: "pi pi-envelope",
-    url: "mailto:hello@simonlejeune.fr",
+    url: 'mailto:simon.lejeune@epitech.eu',
   },
 ];
 

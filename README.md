@@ -1,42 +1,69 @@
 # simonlejeune.fr
 
-This template should help get you started developing with Vue 3 in Vite.
+Portfolio personnel de Simon Lejeune — développeur d'applications mobiles et web.
 
-## Recommended IDE Setup
+Site single-page présentant mes projets, expériences, formations et un formulaire de contact.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+🌐 **[simonlejeune.fr](https://simonlejeune.fr)**
 
-## Recommended Browser Setup
+---
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Stack
 
-## Type Support for `.vue` Imports in TS
+- **[Vue 3](https://vuejs.org/)** + **[TypeScript](https://www.typescriptlang.org/)** — framework et typage
+- **[Vite](https://vite.dev/)** — bundler et serveur de développement
+- **[PrimeVue](https://primevue.org/)** (thème Aura) — composants UI
+- **[PrimeIcons](https://primevue.org/icons/)** — icônes
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Structure
 
-## Customize configuration
+```
+src/
+├── assets/          # CSS global et variables
+├── components/
+│   ├── AppHeader.vue        # Navigation sticky avec menu mobile
+│   ├── HeroSection.vue      # Section d'accueil
+│   ├── AboutSection.vue     # À propos, skills et centres d'intérêt
+│   ├── ProjectsSection.vue  # Projets
+│   ├── ExperienceSection.vue # Expériences professionnelles
+│   ├── EducationSection.vue  # Formations et stages
+│   └── ContactSection.vue   # Formulaire de contact et liens
+└── composables/
+    └── useFadeUp.ts  # Animation d'apparition au scroll
+```
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Développement
 
 ```sh
+# Installer les dépendances
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Lancer le serveur de développement
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
+# Build de production
 npm run build
+
+# Prévisualiser le build
+npm run preview
 ```
+
+## Déploiement
+
+Le déploiement est automatisé via **GitHub Actions** sur chaque push sur `main`.
+
+Le workflow (`.github/workflows/deploy.yml`) :
+1. Installe les dépendances
+2. Build le projet (`npm run build`)
+3. Upload le dossier `dist/` sur l'hébergement OVH via FTP
+
+Les credentials FTP sont stockés en **GitHub Secrets** :
+
+| Secret | Description |
+|--------|-------------|
+| `FTP_SERVER` | Adresse du serveur FTP OVH |
+| `FTP_USERNAME` | Identifiant FTP |
+| `FTP_PASSWORD` | Mot de passe FTP |
+| `FTP_SERVER_DIR` | Dossier de destination sur le serveur |
+
+Sur les **Pull Requests** vers `main`, un job de vérification (`build-check`) s'exécute pour s'assurer que le build ne casse pas avant le merge.
