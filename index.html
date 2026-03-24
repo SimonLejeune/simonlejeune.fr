@@ -12,6 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <script>
+      const stored = localStorage.getItem('theme')
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      const isDark = stored ? stored === 'dark' : prefersDark
+      document.documentElement.classList.add(isDark ? 'dark' : 'light')
+    </script>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>

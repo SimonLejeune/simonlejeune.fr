@@ -18,6 +18,9 @@
       </nav>
 
       <div class="nav-actions">
+        <button class="btn-theme" @click="toggleTheme" :aria-label="isDark ? 'Passer en mode clair' : 'Passer en mode sombre'">
+          <i :class="isDark ? 'pi pi-sun' : 'pi pi-moon'" />
+        </button>
         <a href="#contact" class="btn-contact" @click.prevent="scrollTo('contact')">
           <i class="pi pi-envelope" />
           <span>Contact</span>
@@ -44,6 +47,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useTheme } from '../composables/useTheme'
 
 const navItems = [
   { id: 'about', label: 'À propos' },
@@ -56,6 +60,7 @@ const navItems = [
 const isScrolled = ref(false)
 const activeSection = ref('hero')
 const menuOpen = ref(false)
+const { isDark, toggle: toggleTheme } = useTheme()
 
 function scrollTo(id: string) {
   const el = document.getElementById(id)
@@ -95,7 +100,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 }
 
 .header.scrolled {
-  background: rgba(10, 10, 15, 0.85);
+  background: var(--bg-header);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom-color: var(--border-subtle);
@@ -141,7 +146,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 .nav-link:hover,
 .nav-link.active {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--accent-glow);
 }
 
 .nav-link.active {
@@ -152,6 +157,28 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.btn-theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+
+.btn-theme:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: var(--accent-glow);
+  transform: rotate(15deg);
 }
 
 .btn-contact {
@@ -210,7 +237,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   flex-direction: column;
   padding: 0;
   gap: 0.25rem;
-  background: rgba(10, 10, 15, 0.95);
+  background: var(--bg-header-solid);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid transparent;
   max-height: 0;
