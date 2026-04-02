@@ -178,7 +178,12 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   color: var(--text-primary);
   border-color: var(--accent);
   background: var(--accent-glow);
-  transform: rotate(15deg);
+}
+
+@media (hover: hover) {
+  .btn-theme:hover {
+    transform: rotate(15deg);
+  }
 }
 
 .btn-contact {
