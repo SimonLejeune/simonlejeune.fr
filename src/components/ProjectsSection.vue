@@ -72,6 +72,16 @@ import { onMounted } from "vue";
 
 const projects = [
   {
+    title: "De gauche ou de droite",
+    description:
+      "Application web pour débattre et voter si un sujet est plutôt de gauche ou de droite.",
+    icon: "pi pi-envelope",
+    type: "Projet perso",
+    tags: ["Vue.js", "Node.js", "TypeScript", "Vite"],
+    // github: "https://github.com/SimonLejeune/de-gauche-ou-de-droite",
+    url: "https://degaucheoudedroite.simonlejeune.fr/",
+  },
+  {
     title: "Pokédex",
     description:
       "Application web de Pokédex permettant de consulter tous les Pokémon, leurs stats, types et évolutions. Données récupérées depuis la PokéAPI, interface fluide et réactive construite avec Vue.js.",
