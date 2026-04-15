@@ -12,6 +12,8 @@ jobs:
     name: Delete branch after merge
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
+    permissions:
+      contents: write
 
     steps:
       - name: Delete merged branch
